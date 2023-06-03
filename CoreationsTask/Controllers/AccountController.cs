@@ -105,6 +105,8 @@ namespace CoreationsTask.Controllers
         }
         //--------auth--------------
         public IActionResult AccessDenied(string ReturnUrl) => View();
+        public IActionResult NotFound(string ReturnUrl) => View();
+
 
     }
 }
