@@ -1,5 +1,4 @@
-﻿using CoreationsTask.Data.Static;
-using CoreationsTask.Models;
+﻿using CoreationsTask.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace CoreationsTask.Data

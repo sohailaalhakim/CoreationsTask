@@ -1,6 +1,6 @@
 ﻿using CoreationsTask.Models;
 
-namespace CoreationsTask.ViewModel
+namespace CoreationsTask
 {
     public class CustomerProductVM
     {

@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace CoreationsTask.Data.Base
+namespace CoreationsTask
 {
     public interface IEntityBaseRepository <T> where T : class, IEntityBase, new()
     {

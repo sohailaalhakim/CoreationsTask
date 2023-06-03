@@ -1,10 +1,12 @@
 ﻿@model IEnumerable<Product>
 
-<link href="" rel="stylesheet" />
+@{
+    ViewData["Title"] = "List of Orders History";
+}
 
 <div class="row">
     <div class="col-md-8 offset-md-2">
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for customer .. " title="Type in a name">
         <table class="table" id="customerDataTable">
             <thead>
                 <tr class="text-center">
@@ -18,14 +20,14 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td class="align-middle">
+                        <td class="text-center">
                             @Html.DisplayFor(modelItem => item.Customer.FullName)
                         </td>
 
-                        <td class="align-middle">
+                        <td class="text-center">
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
-                        <td class="align-middle">
+                        <td class="text-center">
                             @Html.DisplayFor(modelItem => item.Price)
                         </td>
 
@@ -37,16 +39,7 @@
 
     </div>
 </div>
-<div style="position:fixed; right:25px; bottom:25px" class="text-white">
-    <a asp-controller="actor" asp-action="Create" class="btn btn-success">
-        <i class="bi bi-plus-circle"></i>Add New Actor
-    </a>
-</div>
-@section Scripts
-    {
-    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/js/customerDatatable.js"></script>
+
 
     <script>
         function myFunction() {
@@ -71,5 +64,4 @@
             }
         }
     </script>
-}
 

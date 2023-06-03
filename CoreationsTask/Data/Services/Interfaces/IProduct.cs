@@ -1,7 +1,6 @@
-﻿using CoreationsTask.Data.Base;
-using CoreationsTask.Models;
+﻿using CoreationsTask.Models;
 
-namespace CoreationsTask.Interfaces
+namespace CoreationsTask.Data.Services.Interfaces
 {
     public interface IProduct : IEntityBaseRepository<Product>
     {

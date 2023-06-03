@@ -1,10 +1,8 @@
-﻿using CoreationsTask.Data;
-using CoreationsTask.Data.Base;
-using CoreationsTask.Interfaces;
-using CoreationsTask.Models;
+﻿using CoreationsTask.Models;
+using CoreationsTask.Data.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace CoreationsTask.Repository
+namespace CoreationsTask.Data.Services.Repository
 {
     public class ProductRepository : EntityBaseRepository<Product>, IProduct
     {
@@ -17,7 +15,7 @@ namespace CoreationsTask.Repository
 
         public Task<List<Product>> GetCustomerProductByIdAsync(int customerId)
         {
-            return _dbContext.Products.Include(n=>n.Customer).Where(p => p.CustomerId == customerId).ToListAsync();
+            return _dbContext.Products.Include(n => n.Customer).Where(p => p.CustomerId == customerId).ToListAsync();
         }
 
         public Task<List<Product>> GetAllCustomersProductsAsync()
@@ -25,6 +23,6 @@ namespace CoreationsTask.Repository
             return _dbContext.Products.Include(n => n.Customer).ToListAsync();
         }
 
-      
+
     }
 }

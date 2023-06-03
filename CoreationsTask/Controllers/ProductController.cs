@@ -1,7 +1,6 @@
-﻿using CoreationsTask.Interfaces;
+﻿using CoreationsTask.Data.Services.Interfaces;
+using CoreationsTask.Data.Services.Repository;
 using CoreationsTask.Models;
-using CoreationsTask.Repository;
-using CoreationsTask.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +15,7 @@ namespace CoreationsTask.Controllers
         {
             _productRepo = productRepo;
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allProducts = await _productRepo.GetAllAsync();

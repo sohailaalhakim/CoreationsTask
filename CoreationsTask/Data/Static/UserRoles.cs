@@ -1,4 +1,4 @@
-﻿namespace CoreationsTask.Data.Static
+﻿namespace CoreationsTask
 {
     public  static class UserRoles
     {

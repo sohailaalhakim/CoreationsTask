@@ -1,7 +1,5 @@
-﻿using CoreationsTask.Data;
-using CoreationsTask.Data.Static;
+﻿
 using CoreationsTask.Models;
-using CoreationsTask.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -51,7 +49,6 @@ namespace CoreationsTask.Controllers
                 if (result.Succeeded)
                 {
                     //create cookie using signinManager
-                    //await _signinManager.SignInAsync(user, false);
                     await _userManager.AddToRoleAsync(user, UserRoles.User);
                     return RedirectToAction("RegisterCompleted", "Account");
 
@@ -84,7 +81,7 @@ namespace CoreationsTask.Controllers
                     var result = await _signinManager.PasswordSignInAsync(user, loginUser.Password, loginUser.RemeberMe,false);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Customer");
+                        return RedirectToAction("Index", "Product");
                     }
                     else
                     {
@@ -106,7 +103,7 @@ namespace CoreationsTask.Controllers
             await _signinManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
-
+        //--------auth--------------
         public IActionResult AccessDenied(string ReturnUrl) => View();
 
     }

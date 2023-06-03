@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace CoreationsTask.Data.Base
+namespace CoreationsTask.Data
 {
     public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IEntityBase, new()
     {
@@ -45,7 +45,7 @@ namespace CoreationsTask.Data.Base
             entityEntry.State = EntityState.Modified;
 
             await _context.SaveChangesAsync();
-          
+
         }
 
         public bool isExist(int id)

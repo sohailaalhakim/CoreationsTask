@@ -4,7 +4,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Threading.Channels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace CoreationsTask.Data
+namespace CoreationsTask
 {
     public class ApplicationContext : IdentityDbContext<ApplicationUser>
     {

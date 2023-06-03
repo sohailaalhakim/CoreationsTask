@@ -1,13 +1,10 @@
+using CoreationsTask;
 using CoreationsTask.Data;
-using CoreationsTask.Data.Base;
-using CoreationsTask.Interfaces;
+using CoreationsTask.Data.Services.Repository;
 using CoreationsTask.Models;
-using CoreationsTask.Repository;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 

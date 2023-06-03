@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CoreationsTask.Data.Base
+namespace CoreationsTask
 {
     public interface IEntityBase
     {
