@@ -1,0 +1,40 @@
+﻿@model CoreationsTask.ViewModel.LoginVM
+
+<div class="container p-5">
+    <div class="card mx-3 mt-n5 shadow-lg" style="border-radius: 10px; border-left:8px #007bff solid; border-right: none; border-top:none; border-bottom:none">
+        <div class="card-body">
+            <h4 class="card-title mb-3 text-primary text-uppercase">Login</h4>
+
+            <form asp-action="Login">
+                <div class="row">
+
+                       <label asp-for="Email" class="control-label"></label>
+                        <div class="form-floating mb-3">
+                            <input  asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                
+                    
+                            <label asp-for="Password" class="control-label"></label>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                   
+                  </div>
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" asp-for="RemeberMe">
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Remember Me</label>
+                </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
