@@ -22,7 +22,66 @@ namespace CoreationsTask.Controllers
 
             return View(allProducts);
         }
-        public async Task<IActionResult> CustomerProduct(int customerId)
+        //--------------------------------------------------------
+        //edit
+        public async Task<IActionResult> Edit(int id)
+        {
+            Product productDetails = await _productRepo.GetByIdAsync(id);
+            if (productDetails == null) return View("NotFound");
+
+            return View(productDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Product product)
+        {
+            Product productDetails = await _productRepo.GetByIdAsync(id);
+            if (productDetails == null) return View("NotFound");
+            if (ModelState.IsValid)
+            {
+                await _productRepo.UpdateAsync(id, product);
+                return RedirectToAction("Index");
+            }
+            return View(product);
+        }
+        //--------------------------------------------------------------
+        //delete
+        public async Task<IActionResult> Delete(int id)
+        {
+            Product productDetails = await _productRepo.GetByIdAsync(id);
+
+            if (productDetails == null) return View("NotFound");
+
+            return View(productDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> ConfirmDelete(int id)
+        {
+            Product productDetails = await _productRepo.GetByIdAsync(id);
+            if (productDetails == null) return View("NotFound");
+            await _productRepo.DeleteAsync(id);
+            return RedirectToAction("Index");
+        }
+        //-----------------------------------------------------------------------
+        //add
+        //public IActionResult Create() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Product product)
+        {
+
+            if (ModelState.IsValid)
+            {
+                await _productRepo.AddAsync(product);
+
+                return RedirectToAction("Index");
+            }
+            return View(product);
+        }
+    //---------------------------------------------------------------------
+    //customer Product
+    public async Task<IActionResult> CustomerProduct(int customerId)
         {
            
             var allProducts = await _productRepo.GetCustomerProductByIdAsync(customerId);

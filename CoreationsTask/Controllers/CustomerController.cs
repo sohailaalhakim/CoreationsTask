@@ -29,6 +29,7 @@ namespace CoreationsTask.Controllers
             }
             return View(allCustomers);
         }
+        //---------------------------------------------------------------------------
         [Authorize(Roles = "Admin")]
 
         //Get: customer/Create
@@ -44,29 +45,55 @@ namespace CoreationsTask.Controllers
             await _customerRepo.AddAsync(customer);
             return RedirectToAction(nameof(Index));
         }
-
-        //edit get 
+        //---------------------------------------------------------------------------------
+       
+        //edit
+        [HttpGet, Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id)
         {
+            Customer customersDetails = await _customerRepo.GetByIdAsync(id);
+            if (customersDetails == null) return View("NotFound");
 
-            var customerDetails = await _customerRepo.GetByIdAsync(id);
-
-            if (customerDetails == null) return View("NotFound");
-            return View(customerDetails);
+            return View(customersDetails);
         }
 
 
         [HttpPost]
         public async Task<IActionResult> Edit(int id, [Bind("Customer Name,Mobile Phone,Address")] Customer customer)
         {
-            if (!ModelState.IsValid)
+            Customer customersDetails = await _customerRepo.GetByIdAsync(id);
+            if (customersDetails == null) return View("NotFound");
+            if (ModelState.IsValid)
             {
-                return View(customer);
+                await _customerRepo.UpdateAsync(id, customer);
+                return RedirectToAction("Index");
             }
-            await _customerRepo.UpdateAsync(id, customer);
-            return RedirectToAction("Index");
-
+            return View(customer);
         }
+
+     
+      //--------------------------------------------
+
+        //delete
+        [HttpGet, Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            Customer customersDetails = await _customerRepo.GetByIdAsync(id);
+            if (customersDetails == null) return View("NotFound");
+
+            return View(customersDetails);
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> ConfirmDelete(int id)
+        {
+            Customer customersDetails = await _customerRepo.GetByIdAsync(id);
+            if (customersDetails == null) return View("NotFound");
+            await _customerRepo.DeleteAsync(id);
+            return RedirectToAction("Index");
+        }
+
+       
+
 
     }
 }

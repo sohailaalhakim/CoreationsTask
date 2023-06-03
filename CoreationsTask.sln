@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreationsTaskData", "Corea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreationsTaskDomain", "CoreationsTaskDomain\CoreationsTaskDomain.csproj", "{48B118A9-BAC3-4579-9F3B-773CD69B171B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreationsTaskServices", "CoreationsTaskServices\CoreationsTaskServices.csproj", "{328FF0FB-75C7-4FBA-9E44-70DF8C61ADD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{48B118A9-BAC3-4579-9F3B-773CD69B171B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48B118A9-BAC3-4579-9F3B-773CD69B171B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48B118A9-BAC3-4579-9F3B-773CD69B171B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{328FF0FB-75C7-4FBA-9E44-70DF8C61ADD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{328FF0FB-75C7-4FBA-9E44-70DF8C61ADD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{328FF0FB-75C7-4FBA-9E44-70DF8C61ADD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{328FF0FB-75C7-4FBA-9E44-70DF8C61ADD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
