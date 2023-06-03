@@ -22,10 +22,11 @@ else
         </button>
         <ul class="dropdown-menu" aria-labelledby="profile-btn">
             <li>
-                <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
-                    <i class="bi bi-list"></i> Orders
+                <a class="dropdown-item" asp-controller="Product" asp-action="CustomerProduct">
+                    <i class="bi bi-list"></i> @UserManager.GetUserName(User) Products
                 </a>
             </li>
+
 
             @if (User.IsInRole("Admin"))
             {

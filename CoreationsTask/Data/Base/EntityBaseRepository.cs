@@ -16,45 +16,36 @@ namespace CoreationsTask.Data.Base
         //add
         public async Task<T> AddAsync(T entity)
         {
-            try
-            {
-                await _context.Set<T>().AddAsync(entity);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("There is error Saving the entity",ex.ToString());
-            }
+           
+             await _context.Set<T>().AddAsync(entity);
+             await _context.SaveChangesAsync();
+   
             return entity;
         }
         //delete
-        public void Delete(int id)
+       
+        public async Task DeleteAsync(int id)
         {
-            try
-            {
-                var entity = _context.Set<T>().Find(id);
-                _context.Set<T>().Remove(entity);
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("There is error Deleting the entity", ex.ToString());
+            
+           var entity = await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
+           EntityEntry entityEntry = _context.Entry<T>(entity);
+           entityEntry.State = EntityState.Deleted;
 
-            }
-
+            await _context.SaveChangesAsync();
         }
 
 
         //get by id
-        public Task<T> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
 
         //update
-        public Task<T> UpdateAsync(int id, T entity)
+        public async Task UpdateAsync(int id, T entity)
         {
-            throw new NotImplementedException();
+            EntityEntry entityEntry = _context.Entry<T>(entity);
+            entityEntry.State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+          
         }
 
         public bool isExist(int id)

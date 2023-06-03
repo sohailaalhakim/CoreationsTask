@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Product>
+
+<link href="" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+        <table class="table" id="customerDataTable">
+            <thead>
+                <tr class="text-center">
+                    <th>@Html.DisplayNameFor(model=>model.Customer.FullName)</th>
+                    <th>@Html.DisplayNameFor(model=>model.Name)</th>
+                    <th>@Html.DisplayNameFor(model=>model.Price)</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Customer.FullName)
+                        </td>
+
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+<div style="position:fixed; right:25px; bottom:25px" class="text-white">
+    <a asp-controller="actor" asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i>Add New Actor
+    </a>
+</div>
+@section Scripts
+    {
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/customerDatatable.js"></script>
+
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("customerDataTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+}
+

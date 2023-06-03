@@ -5,6 +5,8 @@ namespace CoreationsTask.Interfaces
 {
     public interface IProduct : IEntityBaseRepository<Product>
     {
-        public Task<List<Product>> GetCustomerProductAsync(int customerId);
+        public Task<List<Product>> GetCustomerProductByIdAsync(int customerId);
+        public Task<List<Product>> GetAllCustomersProductsAsync();
+
     }
 }

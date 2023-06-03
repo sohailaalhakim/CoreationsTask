@@ -4,11 +4,11 @@ namespace CoreationsTask.Data.Base
 {
     public interface IEntityBaseRepository <T> where T : class, IEntityBase, new()
     {
-        public Task<IEnumerable<T>> GetAllAsync();
-        public Task<T> GetByIdAsync(int id);
-        public Task<T> AddAsync(T entity);
-        public Task<T> UpdateAsync(int id, T entity);
-        public void Delete(int id);
-        public bool isExist(int id);
+         Task<IEnumerable<T>> GetAllAsync();
+         Task<T> GetByIdAsync(int id);
+         Task<T> AddAsync(T entity);
+         Task UpdateAsync(int id, T entity);
+         Task DeleteAsync(int id);
+        bool isExist(int id);
     }
 }

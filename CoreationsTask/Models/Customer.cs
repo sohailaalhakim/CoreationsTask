@@ -7,7 +7,7 @@ namespace CoreationsTask.Models
     {
         [Key]
         public int Id { get; set; }
-        [Display(Name = "Full Name")]
+        [Display(Name = "Customer Name")]
         [Required(ErrorMessage = "Name is required")]
         [MaxLength(100)]
         public string FullName { get; set; }
